@@ -10,18 +10,12 @@ int main() {
     cin >> a >> b;
 
     int ans = 51; 
-
-    size_t size_range = b.size() - a.size();
-    for (size_t i = 0; i <= size_range; i++) {
-        string temp = b.substr(i, a.size());
-        int cnt = 0;
-        for (size_t j = 0; j < a.size(); j++) {
-            if (a[j] != temp[j]) {
-                cnt++;
-            }
-            if (cnt >= ans) break; 
+    for (int i = 0; i <= b.length() - a.length(); i++) {
+        int diff = 0;
+        for (int j = 0; j < a.length(); j++) {
+            if (a[j] != b[i+j]) diff++;           
         }
-        ans = min(ans, cnt);
+        ans = min(ans, diff);
     }
 
     cout << ans;

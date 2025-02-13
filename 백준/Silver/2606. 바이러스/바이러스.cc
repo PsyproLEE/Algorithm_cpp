@@ -1,26 +1,25 @@
 #include <iostream>
 #include <vector>
-#include <stack>
+#include <queue>
 using namespace std;
 
 vector<vector<int>> vec;
 vector<bool> visited(101,false);
 int m,t, cnt = 0;
-void dfs(){
-    stack<int> s;
-    s.push(1);
-    while(!s.empty()){
-        int current = s.top();
-        s.pop();
-        
-        if(visited[current]) continue;
-        visited[current] = true;
-        
-        if(current != 1) cnt++;
-        for(int i =0; i<vec[current].size(); ++i){
-            int next = vec[current][vec[current].size()-1-i];
+void bfs(){
+    queue<int> q;
+    q.push(1);
+    visited[1] = true;
+    
+    while(!q.empty()){
+        int current = q.front();
+        q.pop();
+
+        for(auto next : vec[current]){
             if(visited[next]) continue;
-            s.push(next);
+            q.push(next);
+            visited[next] = true;
+            cnt++;
         }
     }
 }
@@ -35,7 +34,7 @@ int main(){
         vec[a].push_back(b);
         vec[b].push_back(a);
     }
-    dfs();
+    bfs();
     cout << cnt;
 
 }

@@ -1,65 +1,70 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
-vector<vector<int>> vec;  
-vector<bool> visited; 
-int n, m, v;
 
+int n,m,st;
+vector<int> adj[1001];
+bool vis[1001];
 
-void dfs(int node) {
-    
-    cout << node << " ";  
-    visited[node] = true;
-
-    for (int i = 1; i <= n; ++i) {
-        if (vec[node][i] == 1 && !visited[i]) {
-            dfs(i);
-        }
+// 비재귀 DFS
+void dfs1(){
+    stack<int> s;
+    s.push(st);
+    while(!s.empty()){
+        int cur = s.top();
+        s.pop();
+        if(vis[cur]) continue;
+        vis[cur] = true;
+        cout << cur << ' ';
+        for(int i = 0; i < adj[cur].size(); i++){
+        // 스택의 특성상 정점을 역순으로 넣어야 함
+        int nxt = adj[cur][adj[cur].size()-1-i];
+        if(vis[nxt]) continue;
+        s.push(nxt);
+        }    
     }
 }
 
-void bfs(int start) {
+// 재귀 DFS
+void dfs2(int cur){
+    vis[cur] = true;
+    cout << cur << ' ';
+    for(auto nxt : adj[cur]){
+        if(vis[nxt]) continue;    
+        dfs2(nxt);
+    }
+}
+
+void bfs(){
     queue<int> q;
-    vector<bool> visited_bfs(n + 1, false); 
-
-    q.push(start);
-    visited_bfs[start] = true;
-
-    while (!q.empty()) {
-        int node = q.front();
+    q.push(st);
+    vis[st] = true;
+    while(!q.empty()){
+        int cur = q.front();
+        cout << cur << ' ';
         q.pop();
-        cout << node << " ";
-
-        for (int i = 1; i <= n; ++i) {
-            if (vec[node][i] == 1 && !visited_bfs[i]) {
-                visited_bfs[i] = true;
-                q.push(i);
-            }
-        }
+        for(auto nxt : adj[cur]){
+            if(vis[nxt]) continue;
+            q.push(nxt);
+            vis[nxt] = true;
+        }    
     }
 }
 
-int main() {
+int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-
-    cin >> n >> m >> v;
-    
-    vec.resize(n + 1, vector<int>(n + 1, 0));
-    visited.resize(n + 1, false);
-
-    for (int i = 0; i < m; ++i) {
-        int a, b;
-        cin >> a >> b;
-        vec[a][b] = vec[b][a] = 1;
+    cin >> n >> m >> st;
+    while(m--){
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
-
-    dfs(v);
-    cout << '\n';
     
-    bfs(v);
+    for(int i = 1; i <= n; i++)
+        sort(adj[i].begin(), adj[i].end());
+    dfs1(); // dfs2(st);
     cout << '\n';
-
-    return 0;
+    fill(vis+1, vis+n+1, false);
+    bfs();
 }

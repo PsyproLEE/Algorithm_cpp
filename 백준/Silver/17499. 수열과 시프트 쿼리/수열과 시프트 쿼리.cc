@@ -35,21 +35,11 @@ int main() {
         }
     }
 
-    if (move < 0) {
-        move = abs(move);
-         while(move--){
-                int tmp = dq.front();
-                dq.pop_front();
-                dq.push_back(tmp);
-            }
-    }
-    else if (move > 0){
-        while(move--){
-                int tmp = dq.back();
-                dq.pop_back();
-                dq.push_front(tmp);
-                
-            }
+    while(move--){
+        int tmp = dq.back();
+        dq.pop_back();
+        dq.push_front(tmp);
+        
     }
     
 

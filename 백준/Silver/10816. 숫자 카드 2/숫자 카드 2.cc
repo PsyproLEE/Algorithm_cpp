@@ -1,24 +1,32 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
-
 using namespace std;
 
-int arr[500002];
-int N, M, card;
-
 int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin >> N;
-	for (int i = 0; i < N; i++) {
-		cin >> card;
-		arr[i] = card;
-	}
-	sort(arr, arr + N); // 이분탐색을 위해 오름차순 정렬
+    ios::sync_with_stdio(0), cin.tie(0);
 
-	cin >> M;
-	for (int i = 0; i < M; i++) {
-		cin >> card;
-		cout << upper_bound(arr, arr + N, card) - lower_bound(arr, arr + N, card)<<" ";
-	}
+    int n;
+    cin >> n;
+    vector<int> v(n);
+
+    for(int i = 0; i < n; ++i) {
+        cin >> v[i];
+    }
+
+    sort(v.begin(), v.end());
+
+    int m;
+    cin >> m;
+    int x;
+    while(m--) {
+        cin >> x;
+        // lower_bound: x보다 크거나 같은 첫 번째 위치
+        // upper_bound: x보다 큰 첫 번째 위치
+        int lower = lower_bound(v.begin(), v.end(), x) - v.begin();
+        int upper = upper_bound(v.begin(), v.end(), x) - v.begin();
+        cout << upper - lower << ' ';
+    }
+
+    return 0;
 }

@@ -1,63 +1,46 @@
 #include <iostream>
 #include <vector>
-#include <queue>
-#include <algorithm>
+
 using namespace std;
 
-int n, k;
-vector<vector<int>> people;
+const int INF = 1e9;
 
-int bfs(int start) {
-    vector<bool> visited(n + 1, false);
-    queue<pair<int, int>> q;
-    q.push({start, 0});
-    visited[start] = true;
-    int max_depth = 0;
+int main(){
+    cin.tie(0); cout.tie(0);
+    ios::sync_with_stdio(0);
 
-    while (!q.empty()) {
-        int cur = q.front().first;
-        int depth = q.front().second;
-        q.pop();
+    int N, M;
+    cin >> N >> M;
 
-        for (int next : people[cur]) {
-            if (!visited[next]) {
-                visited[next] = true;
-                q.push({next, depth + 1});
-                max_depth = max(max_depth, depth + 1);
+    vector<vector<int>> dist(N+1, vector<int>(N+1, INF));
+
+    for (int i = 1; i <= N; ++i) dist[i][i] = 0;
+
+    for (int i =0; i<M; ++i){
+        int a, b;
+        cin >> a>> b;
+        dist[a][b] = 1;
+        dist[b][a] = 1;
+
+    }
+
+    for(int k = 1; k<= N; ++k){
+        for (int i = 1; i<= N ; ++i){
+            for (int j = 1; j<= N; ++j){
+                if (dist[i][k] < INF && dist[k][j] < INF)
+                    dist[i][j] = min(dist[i][j], dist[i][k] +dist[k][j]);
             }
         }
     }
 
-
-    for (int i = 1; i <= n; ++i) {
-        if (!visited[i]) return 1e9;
-    }
-
-    return max_depth;
-}
-
-int main() {
-    cin >> n >> k;
-    people.resize(n + 1);
-
-    int a, b;
-    while (k--) {
-        cin >> a >> b;
-        people[a].push_back(b);
-        people[b].push_back(a);
-    }
-
-    bool isSmallWorld = true;
-    for (int i = 1; i <= n; ++i) {
-        int max_dist = bfs(i);
-        if (max_dist > 6) {
-            isSmallWorld = false;
-            break;
+    for (int i = 1; i<= N; ++i){
+        for(int j = i + 1 ; j<= N ; ++j){
+            if (dist[i][j] >= 7){
+                cout << "Big World!" << endl;
+                return 0;
+            }
         }
     }
-
-    if (isSmallWorld)
-        cout << "Small World!";
-    else
-        cout << "Big World!";
+    cout << "Small World!" << endl;
+    return 0;
 }

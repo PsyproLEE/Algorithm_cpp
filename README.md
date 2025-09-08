@@ -12,22 +12,15 @@ Baekjoon Online Judge를 중심으로, 각종 코딩 테스트 및 문제 풀이
 ---
 
 ## 📚 Platforms
-- [Baekjoon Online Judge](https://www.acmicpc.net/user/dlwlgns720)  
+- [Baekjoon Online Judge 프로필](https://www.acmicpc.net/user/dlwlgns720)  
+- [Solved.ac 프로필](https://solved.ac/dlwlgns720) 
 - Programmers  
 - 기타 코딩 테스트 및 대회 문제  
 
 ---
 
 ## 📂 Repository Structure
-algorithm-cpp/
-├── Baekjoon/
-│ ├── 1000.cpp
-│ ├── 2178.cpp
-│ └── ...
-├── Programmers/
-│ └── level2_문제1.cpp
-└── Others/
-└── contest_example.cpp
+tree -L 2
 
 ---
 

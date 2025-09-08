@@ -9,10 +9,15 @@ Baekjoon Online Judge를 중심으로, 각종 코딩 테스트 및 문제 풀이
   </a>
 </p>
 
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=PsyproLEE&show_icons=true&theme=tokyonight" height="150"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=PsyproLEE&layout=compact&theme=tokyonight" height="150"/>
+</p>
+
 ---
 
 ## 📚 Platforms
-- [Baekjoon Online Judge](https://www.acmicpc.net/user/PsyproLEE)  
+- [Baekjoon Online Judge](https://www.acmicpc.net/user/dlwlgns720)  
 - Programmers  
 - 기타 코딩 테스트 및 대회 문제  
 

@@ -4,8 +4,8 @@ C++로 푼 알고리즘 문제 풀이 저장소입니다.
 Baekjoon Online Judge를 중심으로, 각종 코딩 테스트 및 문제 풀이 기록을 남깁니다.  
 
 <p align="center">
-  <a href="https://solved.ac/PsyproLEE/">
-    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=PsyproLEE" alt="Solved.ac Profile"/>
+  <a href="https://solved.ac/dlwlgns720/">
+    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=dlwlgns720" alt="Solved.ac Profile"/>
   </a>
 </p>
 

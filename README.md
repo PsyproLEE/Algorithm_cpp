@@ -20,8 +20,17 @@ Baekjoon Online Judge를 중심으로, 각종 코딩 테스트 및 문제 풀이
 ---
 
 ## 📂 Repository Structure
-tree -L 2
-
+```
+algorithm-cpp/
+├── Baekjoon/
+│ ├── 1000.cpp
+│ ├── 2178.cpp
+│ └── ...
+├── Programmers/
+│ └── level2_문제1.cpp
+└── Others/
+└── contest_example.cpp
+```
 ---
 
 ## 🚀 Language & Tools

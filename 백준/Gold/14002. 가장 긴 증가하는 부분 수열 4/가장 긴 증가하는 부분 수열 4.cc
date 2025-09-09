@@ -34,7 +34,7 @@ int main()
     for (int cur = last; cur != -1; cur = prev[cur]) lis.push_back(v[cur]);
     reverse(lis.begin(), lis.end());
     
-    cout << *max_element(dp.begin(), dp.end()) << '\n';
+    cout << dp[last] << '\n';
     for(int x : lis) cout << x << ' ';
     return 0;
 }
